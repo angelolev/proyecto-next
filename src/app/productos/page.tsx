@@ -4,8 +4,6 @@ export default async function Productos() {
   const data = await fetch("https://api.escuelajs.co/api/v1/products");
   const products = await data.json();
 
-  console.log(products, "mis productos");
-
   return (
     <>
       <h1>Productos</h1>
