@@ -5,10 +5,11 @@ import { type NextRequest } from "next/server";
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const { id } = await params;
+    const id = (await params).id;
+    // const { id } = params;
     const product = products.find((p) => p.id === Number(id));
 
     if (!product) {

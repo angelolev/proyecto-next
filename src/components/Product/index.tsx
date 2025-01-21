@@ -1,8 +1,10 @@
-export default function Product({ product }) {
+import { IProduct } from "@/types/product";
+
+export default function Product({ name, id }: IProduct) {
   return (
     <div>
-      <p>{product.title}</p>
-      <a className="text-blue-400" href={`/productos/${product.id}`}>
+      <p>{name}</p>
+      <a className="text-blue-400" href={`/productos/${id}`}>
         Ver detalle
       </a>
     </div>

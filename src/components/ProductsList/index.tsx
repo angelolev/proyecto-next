@@ -1,11 +1,6 @@
+import { IProduct } from "@/types/product";
 import { getProducts } from "@/utils";
 import Link from "next/link";
-
-interface IProduct {
-  id: number;
-  name: string;
-  price: number;
-}
 
 export default async function ProductsList() {
   const data = await getProducts();
