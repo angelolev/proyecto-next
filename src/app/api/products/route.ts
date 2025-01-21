@@ -7,7 +7,7 @@ export async function GET() {
       { products, message: "Los productos fueron cargados" },
       { status: 200 }
     );
-  } catch (error) {
+  } catch {
     return NextResponse.json(
       { message: "Error al cargar los productos" },
       { status: 500 }
