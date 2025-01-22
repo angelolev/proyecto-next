@@ -3,7 +3,7 @@ export async function getProducts() {
     throw new Error("NEXT_PUBLIC_PRODUCTS_API is not defined");
   }
 
-  const response = await fetch(process.env.NEXT_PUBLIC_PRODUCTS_API);
+  const response = await fetch(`${process.env.NEXT_PUBLIC_PRODUCTS_API}`);
 
   const data = response.json();
 
