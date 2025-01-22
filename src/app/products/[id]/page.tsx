@@ -1,5 +1,19 @@
 import { IProduct } from "@/types/product";
+import { getProduct } from "@/utils";
 import Image from "next/image";
+
+type Params = Promise<{ id: number }>;
+
+export async function generateMetadata({ params }: { params: Params }) {
+  const { id } = await params;
+
+  const product = await getProduct(id);
+
+  return {
+    title: `${product.title} - Productos`,
+    description: `Descripción del producto ${id}`,
+  };
+}
 
 // Return a list of `params` to populate the [id] dynamic segment
 export async function generateStaticParams() {
@@ -19,11 +33,7 @@ export default async function ProductPage({
 }) {
   const { id } = await params;
 
-  const response = await fetch(`${process.env.NEXT_PUBLIC_PRODUCTS_API}/${id}`);
-  if (!response.ok) {
-    throw new Error("Failed to fetch product");
-  }
-  const product = await response.json();
+  const product = await getProduct(id);
 
   return (
     <div className="product">
